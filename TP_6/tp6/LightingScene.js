@@ -30,9 +30,12 @@ LightingScene.prototype.init = function(application) {
 
 	this.axis = new CGFaxis(this);
 
-	this.option1 = true;
-	this.option2 = false;
-	this.speed = 3;
+	this.Light1 = true;
+	this.Light2 = true;
+	this.Light3 = true;
+	this.Light4 = true;
+	this.pause = false;
+
 
 	this.materialDefault = new CGFappearance(this);
 
@@ -42,6 +45,7 @@ LightingScene.prototype.init = function(application) {
 	this.floorAppearance.setSpecular(0.1,0.1,0.1,1);
 	this.floorAppearance.setShininess(10);
 	this.floorAppearance.loadTexture("../resources/images/floor.jpg");
+	this.floorAppearance.setTextureWrap("REPEAT","REPEAT");
 
 	this.metalAppearence = new CGFappearance(this);
 	this.metalAppearence.setAmbient(0.3,0.3,0.3,1);
@@ -51,7 +55,8 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
 
 	this.submarine = new MySubmarine(this);
-	this.floor = new MyQuad(this,0,100,0,100);
+	//this.floor = new MyQuad(this,0,50,0,52);
+	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 
 
@@ -68,36 +73,76 @@ LightingScene.prototype.initCameras = function() {
 LightingScene.prototype.initLights = function() {
 	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
 
+	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
+
+	this.shader.bind();
+	
 	// Positions for four lights
-	this.lights[0].setPosition(4, 6, 1, 1);
-	this.lights[0].setVisible(true); // show marker on light position (different from enabled)
+	this.lights[0].setPosition(-5, 6, 5, 1);
+	this.lights[1].setPosition(-5, 6.0, -5, 1.0);
+	this.lights[2].setPosition(5, 6.0, 5, 1.0);
+	this.lights[3].setPosition(5, 6, -5, 1);
 
-	this.lights[1].setPosition(10.5, 6.0, 1.0, 1.0);
-	this.lights[1].setVisible(true); // show marker on light position (different from enabled)
-
-	this.lights[2].setPosition(1, 6.0, 7.5, 1.0);
-	this.lights[2].setVisible(true);
-	//this.lights[1].setVisible(true); // show marker on light position (different from enabled)
-	//this.lights[3].setPosition(4, 6.0, 5.0, 1.0);
-	//this.lights[1].setVisible(true); // show marker on light position (different from enabled)
-
-	this.lights[0].setAmbient(0, 0, 0, 1);
+	this.lights[0].setAmbient(0.1, .1, .1, 1);
 	this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+	this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
 	this.lights[0].enable();
+	this.lights[0].setVisible(true);
 
 	this.lights[1].setAmbient(0, 0, 0, 1);
 	this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
 	this.lights[1].enable();
+	this.lights[1].setVisible(true);
+
 
 	this.lights[2].setAmbient(0, 0, 0, 1);
 	this.lights[2].setDiffuse(1.0, 1.0, 1.0, 1.0);
+	this.lights[2].setSpecular(1.0, 1.0, 1.0, 1.0);
 	this.lights[2].enable();
+	this.lights[2].setVisible(true);
+
+	this.lights[3].setLinearAttenuation(1);
+	this.lights[3].setAmbient(0, 0, 0, 1);
+	this.lights[3].setDiffuse(1.0,1.0,1.0, 1.0);
+	this.lights[3].setSpecular(1.0, 1.0, 1.0, 1.0);
+	this.lights[3].enable();
+	this.lights[3].setVisible(true);
+
+
+
+	this.setGlobalAmbientLight(0,0,0);
+	this.shader.unbind();
 
 };
 
 LightingScene.prototype.updateLights = function() {
 	for (i = 0; i < this.lights.length; i++)
 		this.lights[i].update();
+	
+	// Ligtht1
+	if(this.Light1)
+		this.lights[0].enable();
+	else 
+		this.lights[0].disable();
+	
+	// Light2
+	if(this.Light2)
+		this.lights[1].enable();
+	else 
+		this.lights[1].disable();
+	
+	// Light3
+	if(this.Light3)
+		this.lights[2].enable();
+	else 
+		this.lights[2].disable();
+	
+	/*
+	// Light4
+	if(this.Light4)
+		this.lights[3].enable();
+	else this.lights[3].disable();
+*/
 }
 
 
@@ -151,8 +196,11 @@ LightingScene.prototype.display = function() {
 };
 
 LightingScene.prototype.update = function(currTime){
+	
+	if(!this.pause){
 		this.post.update(currTime);
 		this.submarine.update(currTime);
+	}
 
 
 };

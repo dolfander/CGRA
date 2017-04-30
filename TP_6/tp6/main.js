@@ -8,7 +8,7 @@ serialInclude([
 	'MyQuad.js',
 	'MyUnitCubeQuad.js',
 	'MyTable.js',
-	'Plane.js',
+	'MyPlane.js',
 	'MyClock.js',
 	'MyCylinder.js',
 	'MyClockSurface.js',

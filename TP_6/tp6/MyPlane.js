@@ -1,6 +1,6 @@
 
 /** Represents a plane with nrDivs divisions along both axis, with center at (0,0) */
-function Plane(scene, minS, maxS, minT, maxT, nrDivs) {
+function MyPlane(scene, minS, maxS, minT, maxT, nrDivs) {
 	CGFobject.call(this,scene);
 
 	// nrDivs = 1 if not provided
@@ -17,10 +17,10 @@ function Plane(scene, minS, maxS, minT, maxT, nrDivs) {
 	this.initBuffers();
 };
 
-Plane.prototype = Object.create(CGFobject.prototype);
-Plane.prototype.constructor = Plane;
+MyPlane.prototype = Object.create(CGFobject.prototype);
+MyPlane.prototype.constructor = MyPlane;
 
-Plane.prototype.initBuffers = function() {
+MyPlane.prototype.initBuffers = function() {
 	/* example for nrDivs = 3 :
 	(numbers represent index of point in vertices array)
 
