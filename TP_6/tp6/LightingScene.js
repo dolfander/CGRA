@@ -56,7 +56,7 @@ LightingScene.prototype.init = function(application) {
 
 
 
-	this.setUpdatePeriod(100);
+	this.setUpdatePeriod(10);
 
 
 };

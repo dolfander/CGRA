@@ -59,7 +59,7 @@ MyInterface.prototype.init = function(application) {
  */
 MyInterface.prototype.processKeyboard = function(event) {
 	// call CGFinterface default code (omit if you want to override)
-	CGFinterface.prototype.processKeyboard.call(this,event);
+	//CGFinterface.prototype.processKeyboard.call(this,event);
 
 	// Check key codes e.g. here: http://www.asciitable.com/
 	// or use String.fromCharCode(event.keyCode) to compare chars
@@ -71,21 +71,21 @@ MyInterface.prototype.processKeyboard = function(event) {
 	// 		console.log("Key 'A' pressed");
 	// };
 
-  if (event.keyCode == 65 || event.keyCode == 97)
-	{
-		//this.scene.robot.rotateLeft(this.scene.speed);
+	var x = event.which || event.keyCode;             // Get the Unicode value
+
+
+	if (x == 65 || x == 97){
+		this.scene.submarine.pushLeft(-.025);
 	}
-	else if (event.keyCode == 68 || event.keyCode == 100)
-	{
-		//this.scene.robot.rotateRight(this.scene.speed);
+	else if (x == 68 ||x == 100)	{
+		this.scene.submarine.pushRight(-.025)
 	}
-	else if (event.keyCode == 87 || event.keyCode == 119)
-	{
-		this.scene.submarine.moveForward(this.scene.speed);
+	else if (x == 87 || x == 119){
+		this.scene.submarine.pushForward(0.05);
 	}
-	else if (event.keyCode == 83 || event.keyCode == 115)
-	{
-		this.scene.submarine.moveBack(this.scene.speed);
+	else if (x == 83 || x == 115)	{
+		this.scene.submarine.pushBackward(0.05);
 	}
+
 
 };
