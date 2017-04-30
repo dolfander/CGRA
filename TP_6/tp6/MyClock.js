@@ -21,14 +21,6 @@ function MyClock(scene) {
 	this.clockAppearence.loadTexture("../resources/images/clock.png");
 
 
-	this.blackAppearence = new CGFappearance(this.scene);
-	this.blackAppearence.setAmbient(0,0,0,0);
-	this.blackAppearence.setDiffuse(0,0,0,0);
-	this.blackAppearence.setSpecular(0,0,0,0);
-	this.blackAppearence.setShininess(0);
-
-
-
 
 };
 
@@ -58,7 +50,7 @@ MyClock.prototype.display= function () {
 
 
 
-	this.blackAppearence.apply();
+	this.scene.blackAppearence.apply();
 
 
 //second hand

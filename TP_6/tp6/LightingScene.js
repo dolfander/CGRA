@@ -49,15 +49,22 @@ LightingScene.prototype.init = function(application) {
 
 	this.metalAppearence = new CGFappearance(this);
 	this.metalAppearence.setAmbient(0.3,0.3,0.3,1);
-	this.metalAppearence.setDiffuse(0.8,0.8,0.8,1);
+	this.metalAppearence.setDiffuse(0.9,0.9,0.9,1);
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
-	this.metalAppearence.setShininess(10);
+	this.metalAppearence.setShininess(100);
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
+	
+	this.blackAppearence = new CGFappearance(this);
+	this.blackAppearence.setAmbient(0,0,0,0);
+	this.blackAppearence.setDiffuse(0,0,0,0);
+	this.blackAppearence.setSpecular(0,0,0,0);
+	this.blackAppearence.setShininess(0);
 
 	this.submarine = new MySubmarine(this);
-	//this.floor = new MyQuad(this,0,50,0,52);
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
+	this.submarine_top = new MySubmarineTop(this);
+	this.trapezius = new MyTrapezius(this);
 
 
 
@@ -73,9 +80,7 @@ LightingScene.prototype.initCameras = function() {
 LightingScene.prototype.initLights = function() {
 	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
 
-	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
 
-	this.shader.bind();
 	
 	// Positions for four lights
 	this.lights[0].setPosition(-5, 6, 5, 1);
@@ -111,7 +116,7 @@ LightingScene.prototype.initLights = function() {
 
 
 	this.setGlobalAmbientLight(0,0,0);
-	this.shader.unbind();
+	
 
 };
 
@@ -137,12 +142,12 @@ LightingScene.prototype.updateLights = function() {
 	else 
 		this.lights[2].disable();
 	
-	/*
+	
 	// Light4
 	if(this.Light4)
 		this.lights[3].enable();
 	else this.lights[3].disable();
-*/
+
 }
 
 
@@ -188,6 +193,9 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		this.rotate(90* degToRad, 0, 1, 0);
 		this.submarine.display();
+		//this.rotate(-90* degToRad, 1, 0, 0);
+		//this.submarine_top.display();
+		//this.trapezius.display();
 	this.popMatrix();
 
 
