@@ -186,16 +186,17 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
-		this.translate(8,5,0);
+		this.translate(8,0,0);
 		this.post.display();
 	this.popMatrix();
 
 	this.pushMatrix();
-		this.rotate(90* degToRad, 0, 1, 0);
-		this.submarine.display();
-		//this.rotate(-90* degToRad, 1, 0, 0);
-		//this.submarine_top.display();
-		//this.trapezius.display();
+		//this.rotate(90* degToRad, 0, 1, 0);
+		//this.submarine.display();
+		this.rotate(-90* degToRad, 1, 0, 0);
+		this.submarine_top.display();
+		
+	
 	this.popMatrix();
 
 

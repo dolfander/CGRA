@@ -4,6 +4,7 @@ function MySubmarineTop(scene) {
  this.cylinder = new MyCylinder(this.scene,50,1);
  this.surface = new MyClockSurface(this.scene,50);
  this.semi_sphere = new MySemiSphere(this.scene,50,19);
+ this.trapezius = new MyTrapezius(this.scene);
  
  	this.glassAppearence = new CGFappearance(this.scene);
 	this.glassAppearence.setAmbient(0.3,0.3,0.3,1);
@@ -69,6 +70,17 @@ MySubmarineTop.prototype.display = function() {
 	this.surface.display();
 	this.scene.popMatrix();
 	
+	// Trapezius
+	
+	this.scene.metalAppearence.apply();
+	
+	this.scene.pushMatrix();
+	this.scene.rotate(90*degToRad,1,0,0);
+	this.scene.rotate(90*degToRad,0,1,0);
+	this.scene.translate(0,0,-0.5);
+	this.scene.scale(1,0.3,0.7);
+	
+	this.trapezius.display();
  	
 
 

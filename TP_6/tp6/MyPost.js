@@ -18,14 +18,15 @@ MyPost.prototype.display= function () {
 
   this.scene.pushMatrix();
     this.scene.rotate(270 * degToRad, 1, 0, 0);
-		this.scene.scale(0.04,0.04,3);
+		this.scene.scale(0.06,0.06,4.8);
 		this.scene.metalAppearence.apply();
     this.post.display();
   this.scene.popMatrix();
 
 this.scene.pushMatrix();
-	this.scene.scale(0.25,0.25,0.1);
-	this.scene.translate(0,11.01,-0.5);
+this.scene.translate(0,5,-0.1);
+	this.scene.scale(0.4,0.4,0.2);
+	
 	this.clock.display();
 this.scene.popMatrix();
 

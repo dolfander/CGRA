@@ -45,7 +45,7 @@ MyQuad.prototype.initBuffers = function () {
             0.5, 0.5, 0.5		//3
 			];
 
-	this.indices = [
+	this.indices = [  
 			2, 1, 0,
 			3, 1, 2
         ];
