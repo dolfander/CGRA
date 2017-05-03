@@ -49,7 +49,7 @@ LightingScene.prototype.init = function(application) {
 
 	this.metalAppearence = new CGFappearance(this);
 	this.metalAppearence.setAmbient(0.3,0.3,0.3,1);
-	this.metalAppearence.setDiffuse(0.9,0.9,0.9,1);
+	this.metalAppearence.setDiffuse(1,1,1,1);
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
@@ -64,8 +64,8 @@ LightingScene.prototype.init = function(application) {
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 	this.submarine_top = new MySubmarineTop(this);
-	this.trapezius = new MyTrapezius(this);
-
+	this.trapezius = new MyTrapezius(this,2,1,0.5);
+	
 
 
 	this.setUpdatePeriod(10);
@@ -193,8 +193,10 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		//this.rotate(90* degToRad, 0, 1, 0);
 		//this.submarine.display();
-		this.rotate(-90* degToRad, 1, 0, 0);
-		this.submarine_top.display();
+		//this.rotate(-90* degToRad, 1, 0, 0);
+		//this.submarine_top.display();
+		this.metalAppearence.apply();
+		this.trapezius.display();
 		
 	
 	this.popMatrix();
