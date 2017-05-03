@@ -4,7 +4,7 @@ function MySubmarineTop(scene) {
  this.cylinder = new MyCylinder(this.scene,50,1);
  this.surface = new MyClockSurface(this.scene,50);
  this.semi_sphere = new MySemiSphere(this.scene,50,19);
- this.trapezius = new MyTrapezius(this.scene);
+ this.trapezius = new MyTrapezius(this.scene,1.5,1,0.3);
  
  	this.glassAppearence = new CGFappearance(this.scene);
 	this.glassAppearence.setAmbient(0.3,0.3,0.3,1);
@@ -13,7 +13,7 @@ function MySubmarineTop(scene) {
 	this.glassAppearence.setShininess(10);
 	this.glassAppearence.loadTexture("../resources/images/glass.jpg");
  
-
+ this.trapezius.initBuffers();
  this.initBuffers();
 };
 
@@ -41,10 +41,13 @@ MySubmarineTop.prototype.display = function() {
 	this.scene.blackAppearence.apply();
 	
 	this.scene.pushMatrix();
+	this.scene.translate(0.3,0,0);
+	this.scene.scale(1,1,0.8);
+	
+	this.scene.pushMatrix();
 	this.scene.scale(0.1,0.1,3);
 	this.cylinder.display();
 	this.scene.popMatrix();
-	
 	
 	
 	this.scene.pushMatrix();
@@ -61,6 +64,8 @@ MySubmarineTop.prototype.display = function() {
 	this.semi_sphere.display();
 	this.scene.popMatrix();
 	
+	
+	// Periscope - Glass
 	this.glassAppearence.apply();
 	
 	this.scene.pushMatrix();
@@ -70,17 +75,19 @@ MySubmarineTop.prototype.display = function() {
 	this.surface.display();
 	this.scene.popMatrix();
 	
+	this.scene.popMatrix();
+	
 	// Trapezius
 	
-	this.scene.metalAppearence.apply();
+	this.scene.blackAppearence.apply();
 	
 	this.scene.pushMatrix();
-	this.scene.rotate(90*degToRad,1,0,0);
-	this.scene.rotate(90*degToRad,0,1,0);
-	this.scene.translate(0,0,-0.5);
-	this.scene.scale(1,0.3,0.7);
-	
+	this.scene.rotate(-90 *degToRad,0,0,1);
+	this.scene.rotate(90 *degToRad,1,0,0);
+	this.scene.scale(2.5,0.5,2);
+	this.scene.translate(-0.75,1,-0.1);
 	this.trapezius.display();
+	this.scene.popMatrix();
  	
 
 

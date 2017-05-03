@@ -78,6 +78,8 @@ MyTrapezius.prototype.initBuffers = function () {
 		this.vertices.push(this.B*i,0,0);
 		this.vertices.push(this.B*i,this.h,0);
 		
+		var ang = Math.atan(x1/this.h);
+		
 		
 		if(i){
 			this.vertices.push(x2,0,this.h);
@@ -85,6 +87,12 @@ MyTrapezius.prototype.initBuffers = function () {
 			
 			this.indices.push(22,20,21);
 			this.indices.push(22,21,23);
+			
+		
+			for(var j =0; j <4; j++)
+			this.normals.push(Math.sin(ang),0,Math.cos(ang));
+		
+		
 		}else{
 			
 			this.vertices.push(x1,0,this.h);
@@ -93,10 +101,12 @@ MyTrapezius.prototype.initBuffers = function () {
 			this.indices.push(16,18,19);
 			this.indices.push(16,19,17);
 			
+			for(var j =0; j <4; j++)
+			this.normals.push(-Math.sin(ang),0,Math.cos(ang));
+			
 		}
 		
-		for(var j =0; j <4; j++)
-			this.normals.push(0,0,1);
+		
 		
 		
 	}

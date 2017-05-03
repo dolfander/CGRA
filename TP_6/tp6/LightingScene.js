@@ -106,7 +106,7 @@ LightingScene.prototype.initLights = function() {
 	this.lights[2].enable();
 	this.lights[2].setVisible(true);
 
-	this.lights[3].setLinearAttenuation(1);
+
 	this.lights[3].setAmbient(0, 0, 0, 1);
 	this.lights[3].setDiffuse(1.0,1.0,1.0, 1.0);
 	this.lights[3].setSpecular(1.0, 1.0, 1.0, 1.0);
@@ -191,12 +191,11 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
-		//this.rotate(90* degToRad, 0, 1, 0);
-		//this.submarine.display();
+		this.rotate(90* degToRad, 0, 1, 0);
+		this.submarine.display();
 		//this.rotate(-90* degToRad, 1, 0, 0);
-		//this.submarine_top.display();
-		this.metalAppearence.apply();
-		this.trapezius.display();
+		
+		
 		
 	
 	this.popMatrix();
