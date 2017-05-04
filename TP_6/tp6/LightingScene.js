@@ -188,13 +188,8 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
-		//this.rotate(90* degToRad, 0, 1, 0);
-		//this.submarine.display();
-		this.helix.display();
-
-		
-		
-		
+		this.rotate(90* degToRad, 0, 1, 0);
+		this.submarine.display();
 		
 	
 	this.popMatrix();
