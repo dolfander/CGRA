@@ -2,11 +2,17 @@
  * MyCylinder
  * @constructor
  */
- function MyCylinder(scene, slices, stacks) {
+ function MyCylinder(scene, slices, stacks, reverse) {
  	CGFobject.call(this,scene);
 
 	this.slices=slices;
 	this.stacks=stacks;
+	
+	if(typeof reverse == 'undefined') 
+		this.reverse = false;
+	 else 
+		this.reverse = reverse;
+	
 
  	this.initBuffers();
  };
@@ -28,16 +34,51 @@
 			this.vertices.push(Math.cos(i*(2*Math.PI)/this.slices));
 			this.vertices.push(Math.sin(i*(2*Math.PI)/this.slices));
 			this.vertices.push(q);
+			
+			if(this.reverse){
+				this.normals.push(-Math.cos(i*(2*Math.PI)/this.slices));
+			this.normals.push(-Math.sin(i*(2*Math.PI)/this.slices));
+			this.normals.push(0);
+			
+				
+				
+			}else{
 
 			this.normals.push(Math.cos(i*(2*Math.PI)/this.slices));
 			this.normals.push(Math.sin(i*(2*Math.PI)/this.slices));
 			this.normals.push(0);
+			
+			}
 		}
 	}
 
 	for (var q = 0; q < this.stacks; q++) {
 		//---------------slices------------------
+		
+		if(this.reverse){
 		for (var i = 0; i < this.slices; i++) {
+			
+			this.indices.push(this.slices*(q+1)+i);
+			this.indices.push(this.slices*q+i+1);
+			this.indices.push(this.slices*q+i);
+			
+			if (i != (this.slices - 1)) {
+				this.indices.push(this.slices*q+i+1);
+				this.indices.push(this.slices*(q+1)+i);
+				this.indices.push(this.slices*(q+1)+i+1);
+				
+				}
+			else {
+				this.indices.push(this.slices*q+i);
+				this.indices.push(this.slices*q+i+1);
+				this.indices.push(this.slices*q);
+				
+				}
+		}
+		}else{
+			
+			for (var i = 0; i < this.slices; i++) {
+			
 
 			this.indices.push(this.slices*q+i);
 			this.indices.push(this.slices*q+i+1);
@@ -52,6 +93,8 @@
 				this.indices.push(this.slices*q+i+1)
 				this.indices.push(this.slices*q+i);
 				}
+		}
+			
 		}
 	}
 

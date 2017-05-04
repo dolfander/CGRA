@@ -21,6 +21,7 @@ serialInclude([
 	'MySubmarineTop.js',
 	'MyTrapezius.js',
 	'MyTrapeziusAux.js',
+	'MyHelix.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

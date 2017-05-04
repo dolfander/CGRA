@@ -5,7 +5,7 @@ function MySubmarineStructure(scene) {
  this.body = new MyCylinder(this.scene,50,1);
  this.semi_sphere = new MySemiSphere(this.scene,50,19);
  this.top = new MySubmarineTop(this.scene);
- this
+ this.trapezius = new MyTrapezius(this.scene,2.5,1.5,0.3);
 
  
  this.initBuffers();
@@ -72,6 +72,15 @@ MySubmarineStructure.prototype.display = function() {
 	this.scene.popMatrix();
 	
 	this.scene.pushMatrix();
+	this.scene.scale(1.5,0.5,1.2);
+	this.scene.translate(-1.23,0,-0.3);
+	this.trapezius.display();
+	
+	this.scene.popMatrix();
+	this.scene.rotate(90*degToRad,0,0,1);
+	this.scene.scale(1.5,0.5,1.2);
+	this.scene.translate(-1.23,0,-0.3);
+	this.trapezius.display();
 	
 
 

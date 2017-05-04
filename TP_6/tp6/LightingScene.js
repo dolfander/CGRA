@@ -63,11 +63,8 @@ LightingScene.prototype.init = function(application) {
 	this.submarine = new MySubmarine(this);
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
-	this.submarine_top = new MySubmarineTop(this);
-	this.trapezius = new MyTrapezius(this,2,1,0.5);
+	this.helix = new MyHelix(this);
 	
-
-
 	this.setUpdatePeriod(10);
 
 
@@ -191,9 +188,11 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
-		this.rotate(90* degToRad, 0, 1, 0);
-		this.submarine.display();
-		//this.rotate(-90* degToRad, 1, 0, 0);
+		//this.rotate(90* degToRad, 0, 1, 0);
+		//this.submarine.display();
+		this.helix.display();
+
+		
 		
 		
 		
