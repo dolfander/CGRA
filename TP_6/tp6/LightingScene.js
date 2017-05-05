@@ -26,8 +26,6 @@ LightingScene.prototype.init = function(application) {
 	this.gl.enable(this.gl.CULL_FACE);
 	this.gl.depthFunc(this.gl.LEQUAL);
 
-
-
 	this.axis = new CGFaxis(this);
 
 	this.Light1 = true;
@@ -52,20 +50,26 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setDiffuse(1,1,1,1);
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
-	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
+	this.metalAppearence.loadTexture("../resources/images/yellow.jpg");
 	
 	this.blackAppearence = new CGFappearance(this);
 	this.blackAppearence.setAmbient(0,0,0,0);
 	this.blackAppearence.setDiffuse(0,0,0,0);
 	this.blackAppearence.setSpecular(0,0,0,0);
 	this.blackAppearence.setShininess(0);
+	
+	
+	this.bodyAppearances = [];
+	this.detailsAppearances = [];
+	this.matoptions = [ 'Texture 0', 'Texture 1'];
+	this.currRobotAppearance = 0;
 
 	this.submarine = new MySubmarine(this);
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
 	
-	this.setUpdatePeriod(10);
+	this.setUpdatePeriod(20);
 
 
 };
@@ -188,6 +192,7 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
+		this.translate(0,1.5,0);
 		this.rotate(90* degToRad, 0, 1, 0);
 		this.submarine.display();
 		

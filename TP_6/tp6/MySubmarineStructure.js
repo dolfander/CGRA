@@ -56,6 +56,7 @@ MySubmarineStructure.prototype.display = function() {
 		this.semi_sphere .display();
 	this.scene.popMatrix();
 	
+	
 	this.scene.pushMatrix();
 		this.scene.scale(0.78,0.78,0.78);
 		this.scene.rotate(180* degToRad, 0, 1, 0);
@@ -87,9 +88,17 @@ MySubmarineStructure.prototype.display = function() {
 	
 	
 	this.scene.pushMatrix();
-		this.scene.translate(1,0,0.5);
+		this.scene.translate(1.07,-0.2,0.3);
 		this.scene.scale(0.3,0.3,0.3);
 		this.helix.display();
+	this.scene.popMatrix();
+	
+	this.scene.pushMatrix();
+		this.scene.translate(-1.07,-0.2,0.3);
+		this.scene.scale(0.3,0.3,0.3);
+		this.helix.display();
+	this.scene.popMatrix();
+	
 	
 	
 	
