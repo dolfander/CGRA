@@ -22,6 +22,7 @@ serialInclude([
 	'MyTrapezius.js',
 	'MyTrapeziusAux.js',
 	'MyHelix.js',
+    'MyTorpedo.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);
