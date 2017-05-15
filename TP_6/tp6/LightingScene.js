@@ -50,7 +50,18 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setDiffuse(1,1,1,1);
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
-	this.metalAppearence.loadTexture("../resources/images/yellow.jpg");
+	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
+	
+	
+	
+	
+	this.trippyAppearence = new CGFappearance(this);
+	this.trippyAppearence.setAmbient(0.3,0.3,0.3,1);
+	this.trippyAppearence.setDiffuse(1,1,1,1);
+	this.trippyAppearence.setSpecular(0.1,0.1,0.1,1);
+	this.trippyAppearence.setShininess(100);
+	this.trippyAppearence.loadTexture("../resources/images/trippy.jpg");
+	
 	
 	this.blackAppearence = new CGFappearance(this);
 	this.blackAppearence.setAmbient(0,0,0,0);
@@ -59,12 +70,18 @@ LightingScene.prototype.init = function(application) {
 	this.blackAppearence.setShininess(0);
 	
 	
-	this.bodyAppearances = [];
-	this.detailsAppearances = [];
+	this.yellowAppearance = new CGFappearance(this);
+	this.yellowAppearance.setAmbient(1,1,0,0);
+	this.yellowAppearance.setDiffuse(1,1,0,0);
+	this.yellowAppearance.setSpecular(1,1,0,0);
+	this.yellowAppearance.setShininess(100);
+	
+	
+	this.submarineAppearances = [this.metalAppearence, this.trippyAppearence];
 	this.matoptions = [ 'Texture 0', 'Texture 1'];
-	this.currRobotAppearance = 0;
+	this.currAppearance = 0;
 
-	this.submarine = new MySubmarine(this);
+	this.submarine = new MySubmarine(this,this.submarineAppearances[this.currAppearance]);
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
@@ -205,6 +222,8 @@ LightingScene.prototype.display = function() {
 };
 
 LightingScene.prototype.update = function(currTime){
+	
+	this.submarine.setMaterial(this.submarineAppearances[this.currAppearance]);
 	
 	if(!this.pause){
 		this.post.update(currTime);

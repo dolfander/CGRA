@@ -3,7 +3,7 @@
  * @constructor
  */
 
- function MySubmarine(scene) {
+ function MySubmarine(scene,material) {
  	CGFobject.call(this,scene);
 	this.x = 0;
 	this.y = 0;
@@ -17,7 +17,7 @@
 	this.speed = 0;
 	this.angspeed = 0;
 
-	this.structure = new MySubmarineStructure(this.scene);
+	this.structure = new MySubmarineStructure(this.scene,material);
 	this.time = 0;
 	this.max_speed = .5;
 	this.max_angspeed = 1;
@@ -90,4 +90,8 @@ MySubmarine.prototype.rotateLeft = function(amount) {
 MySubmarine.prototype.rotateRight = function(amount) {
 
   this.b -= amount;
+}
+
+MySubmarine.prototype.setMaterial = function(material) {
+	this.structure.setMaterial(material);
 }

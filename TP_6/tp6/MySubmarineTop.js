@@ -1,5 +1,7 @@
-function MySubmarineTop(scene) {
+function MySubmarineTop(scene,material) {
  CGFobject.call(this,scene);
+ 
+ this.material =  material;
  
  this.cylinder = new MyCylinder(this.scene,50,1);
  this.surface = new MyClockSurface(this.scene,50);
@@ -12,6 +14,8 @@ function MySubmarineTop(scene) {
 	this.glassAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.glassAppearence.setShininess(10);
 	this.glassAppearence.loadTexture("../resources/images/glass.jpg");
+	
+	
  
  this.trapezius.initBuffers();
  this.initBuffers();
@@ -23,7 +27,7 @@ MySubmarineTop.prototype.constructor = MySubmarineTop;
 
 MySubmarineTop.prototype.display = function() {
 
-	this.scene.metalAppearence.apply();
+	this.material.apply();
 	
 	// Tower
 
@@ -92,3 +96,8 @@ MySubmarineTop.prototype.display = function() {
 
 
  };
+ 
+ MySubmarineTop.prototype.setMaterial = function(material) {
+	this.material= material;
+}
+
