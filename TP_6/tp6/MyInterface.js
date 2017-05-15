@@ -52,7 +52,7 @@ MyInterface.prototype.init = function(application) {
 	// this.speed=3;
 	// min and max values can be specified as parameters
 
-	this.gui.add(this.scene, 'currAppearance', { Texture0: 0, Texture1: 1} );
+	this.gui.add(this.scene, 'Texture', {Normal: 0, Trippy: 1} );
 
 	this.gui.add(this.scene, 'pause');
 

@@ -78,10 +78,10 @@ LightingScene.prototype.init = function(application) {
 	
 	
 	this.submarineAppearances = [this.metalAppearence, this.trippyAppearence];
-	this.matoptions = [ 'Texture 0', 'Texture 1'];
-	this.currAppearance = 0;
+	this.matoptions = [ 'Normal', 'Trippy'];
+	this.Texture = 0;
 
-	this.submarine = new MySubmarine(this,this.submarineAppearances[this.currAppearance]);
+	this.submarine = new MySubmarine(this,this.submarineAppearances[this.Texture]);
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
@@ -223,7 +223,7 @@ LightingScene.prototype.display = function() {
 
 LightingScene.prototype.update = function(currTime){
 	
-	this.submarine.setMaterial(this.submarineAppearances[this.currAppearance]);
+	this.submarine.setMaterial(this.submarineAppearances[this.Texture]);
 	
 	if(!this.pause){
 		this.post.update(currTime);

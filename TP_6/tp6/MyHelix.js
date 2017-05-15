@@ -6,6 +6,10 @@ function MyHelix(scene,material) {
  this.polign = new MyUnitCubeQuad(this.scene);
  this.semi_sphere = new MySemiSphere(this.scene,40,19); 
  
+ this.a = 0;
+this.b = 0;
+this.c = 0;
+ 
  this.material = material;
 
  this.initBuffers();
@@ -30,6 +34,9 @@ MyHelix.prototype.display = function() {
 	
 	
 	this.scene.pushMatrix();
+	this.scene.rotate(this.a, 1,0,0);
+	this.scene.rotate(this.b, 0,0,1);
+	this.scene.rotate(this.c, 0,1,0);
 	this.scene.scale(0.4,1.9,0.25);
 	this.polign.display();
 	this.scene.popMatrix();
@@ -47,4 +54,9 @@ MyHelix.prototype.display = function() {
  
  MyHelix.prototype.setMaterial = function(material) {
 	this.material= material;
+}
+
+MyHelix.prototype.update = function(currTime,speed) {
+
+  	this.b += 0.05;
 }
