@@ -87,6 +87,7 @@ LightingScene.prototype.init = function(application) {
 	this.helix = new MyHelix(this);
 
 	this.torpedo = new MyTorpedo(this, this.metalAppearence);
+	this.target = new MyTarget(this, this.trippyAppearence);
 	
 	this.setUpdatePeriod(20);
 
@@ -221,9 +222,13 @@ LightingScene.prototype.display = function() {
 
 	this.pushMatrix();
 	    this.translate(1, 1, 0);
-	    //this.rotate(90 * degToRad, 0, 1, 0);
 	    this.torpedo.display();
 	    this.popMatrix();
+
+	this.pushMatrix();
+	    this.translate(1, 1, 0);
+	    this.target.display();
+	this.popMatrix();
 
 
 };

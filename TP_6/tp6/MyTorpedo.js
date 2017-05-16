@@ -6,7 +6,6 @@ function MyTorpedo(scene, material) {
     this.cylinder = new MyCylinder(this.scene, 50, 1);
     this.semi_sphere = new MySemiSphere(this.scene, 50, 19);
     this.trapezius = new MyTrapezius(this.scene, 2.5, 1.5, 0.3);
- 
 
     this.glassAppearence = new CGFappearance(this.scene);
     this.glassAppearence.setAmbient(0.3, 0.3, 0.3, 1);
@@ -32,33 +31,30 @@ MyTorpedo.prototype.display = function () {
     this.scene.popMatrix();
 
     this.scene.pushMatrix();
-        this.scene.translate(0, 0, 2);
-        this.scene.scale(0.1, 0.1, 0.1);
-        this.semi_sphere.display();
+    this.scene.translate(0, 0, 2);
+    this.scene.scale(0.1, 0.1, 0.1);
+    this.semi_sphere.display();
     this.scene.popMatrix();
 
     this.scene.pushMatrix();
-        this.scene.rotate(180 * degToRad, 0, 1, 0);
-        this.scene.scale(0.1, 0.1, 0.1);
-        this.semi_sphere.display();
+    this.scene.rotate(180 * degToRad, 0, 1, 0);
+    this.scene.scale(0.1, 0.1, 0.1);
+    this.semi_sphere.display();
+    this.scene.popMatrix();
+
+    this.scene.pushMatrix();
+    this.scene.scale(0.15, 0.1, 0.2);
+    this.scene.translate(-1.23, -0.15, 0);
+    this.trapezius.display();
+    this.scene.popMatrix();
+
+    this.scene.pushMatrix();
+    this.scene.rotate(90 * degToRad, 0, 0, 1);
+    this.scene.scale(0.15, 0.1, 0.2);
+    this.scene.translate(-1.23, -0.15, 0);
+    this.trapezius.display();
     this.scene.popMatrix();
     
-    this.scene.pushMatrix();
-        this.scene.scale(0.15, 0.1, 0.2);
-        this.scene.translate(-1.23, -0.15, 0);
-        this.trapezius.display();
-    this.scene.popMatrix();
-    
-    this.scene.pushMatrix();
-        this.scene.rotate(90 * degToRad, 0, 0, 1);
-        this.scene.scale(0.15, 0.1, 0.2);
-        this.scene.translate(-1.23, -0.15, 0);
-        this.trapezius.display();
-    this.scene.popMatrix();
-
-
-
-
 
 };
 
