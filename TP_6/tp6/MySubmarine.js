@@ -77,9 +77,20 @@ MySubmarine.prototype.pushLeft = function(amount) {
 	else if(this.angspeed > 0)
 		this.angspeed = this.max_angspeed;
 	else this.angspeed = -this.max_angspeed;
+	
+	if(this.structure.rotationAngle < 45)
+	this.structure.rotationAngle += 1;
 }
 MySubmarine.prototype.pushRight = function(amount) {
-	this.pushLeft(-amount);
+	if(Math.abs(this.angspeed -amount) <= this.max_angspeed)
+		this.angspeed-=amount;
+	else if(this.angspeed > 0)
+		this.angspeed = this.max_angspeed;
+	else this.angspeed = -this.max_angspeed;
+	
+	if(this.structure.rotationAngle < -45)
+	this.structure.rotationAngle -= 1;
+
 }
 
 MySubmarine.prototype.pushBackward = function(amount) {

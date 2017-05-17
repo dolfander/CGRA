@@ -10,8 +10,10 @@ function MySubmarineStructure(scene, material) {
  this.rightHelix  = new MyHelix(this.scene,material);
  this.leftHelix  = new MyHelix(this.scene,material);
  
+ 
 
  this.material = material;
+ this.rotationAngle =0;
  
  this.initBuffers();
 };
@@ -52,17 +54,23 @@ MySubmarineStructure.prototype.display = function() {
 		this.top.display();
 	this.scene.popMatrix();
 	
+	
+	
 	this.scene.pushMatrix();
 		this.scene.scale(1.5,0.5,1.2);
 		this.scene.translate(-1.23,0,-0.3);
 		this.trapezius.display();
 	this.scene.popMatrix();
 	
+	
 	this.scene.pushMatrix();
+		
 		this.scene.rotate(90*degToRad,0,0,1);
+		this.scene.rotate(this.rotationAngle*degToRad,1,0,0);
 		this.scene.scale(1.5,0.5,1.2);
 		this.scene.translate(-1.23,0,-0.3);
-		this.trapezius.display();
+		
+		this.verticalRudder.display();
 	this.scene.popMatrix();
 	
 	
