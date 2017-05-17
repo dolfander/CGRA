@@ -82,6 +82,7 @@ MyInterface.prototype.processKeyboard = function(event) {
 
 	if (x == 65 || x == 97){
 		this.scene.submarine.pushLeft(-.025);
+	
 	}
 	else if (x == 68 ||x == 100)	{
 		this.scene.submarine.pushRight(-.025)

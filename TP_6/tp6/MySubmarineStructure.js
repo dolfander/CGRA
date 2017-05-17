@@ -5,8 +5,11 @@ function MySubmarineStructure(scene, material) {
  this.body = new MyCylinder(this.scene,50,1);
  this.semi_sphere = new MySemiSphere(this.scene,50,19);
  this.top = new MySubmarineTop(this.scene,material);
+ this.verticalRudder = new MyTrapezius(this.scene,2.5,1.5,0.3);
  this.trapezius = new MyTrapezius(this.scene,2.5,1.5,0.3);
- this.helix  = new MyHelix(this.scene,material);
+ this.rightHelix  = new MyHelix(this.scene,material);
+ this.leftHelix  = new MyHelix(this.scene,material);
+ 
 
  this.material = material;
  
@@ -66,22 +69,25 @@ MySubmarineStructure.prototype.display = function() {
 	this.scene.pushMatrix();
 		this.scene.translate(1.07,-0.2,0.3);
 		this.scene.scale(0.3,0.3,0.3);
-		this.helix.display();
+		this.leftHelix.display();
 	this.scene.popMatrix();
+	
+	
 	
 	this.scene.pushMatrix();
 		this.scene.translate(-1.07,-0.2,0.3);
 		this.scene.scale(0.3,0.3,0.3);
-		this.helix.display();
+		this.rightHelix.display();
 	this.scene.popMatrix();
-	
+
 
  }
  
   MySubmarineStructure.prototype.setMaterial = function(material) {
 	this.material = material;
 	this.top.setMaterial(material);
-	this.helix.setMaterial(material);
+	this.rightHelix.setMaterial(material);
+	this.leftHelix.setMaterial(material);
  }
 
 

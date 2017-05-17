@@ -48,7 +48,8 @@ MySubmarine.prototype.update = function(currTime) {
   	this.angspeed*=.925;
 	
 	
-	this.structure.helix.update(this.speed);
+	this.structure.rightHelix.update(1,this.speed);
+	this.structure.leftHelix.update(0,this.speed);
 		
 	
     this.time = currTime;
