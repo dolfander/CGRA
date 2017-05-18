@@ -1,11 +1,11 @@
 /**
- * MyRobot
+ * MySubmarine
  * @constructor
  */
 
  function MySubmarine(scene,material) {
  	CGFobject.call(this,scene);
-	this.x = 0;
+	this.x = 5;
 	this.y = 0;
 	this.z = 0;
 	this.a = 0;

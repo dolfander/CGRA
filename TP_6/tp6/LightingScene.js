@@ -16,7 +16,7 @@ LightingScene.prototype.constructor = LightingScene;
 LightingScene.prototype.init = function(application) {
 	CGFscene.prototype.init.call(this, application);
 
-	this.enableTextures(true);
+	this.enableTextures(true);  
 	this.initCameras();
 	this.initLights();
 
@@ -67,10 +67,7 @@ LightingScene.prototype.init = function(application) {
 	this.blackAppearence.setDiffuse(0,0,0,0);
 	this.blackAppearence.setSpecular(0,0,0,0);
 	this.blackAppearence.setShininess(0);
-	
-	
 
-	
 	this.submarineAppearances = [this.metalAppearence, this.trippyAppearence];
 	this.matoptions = [ 'Normal', 'Trippy'];
 	this.Texture = 0;
@@ -81,10 +78,15 @@ LightingScene.prototype.init = function(application) {
 	this.helix = new MyHelix(this);
 
 	this.torpedo = new MyTorpedo(this, this.metalAppearence);
-	this.target = new MyTarget(this, this.trippyAppearence);
-	
-	this.setUpdatePeriod(20);
 
+    target1 = new MyTarget(this, this.blackAppearence);
+	target2 = new MyTarget(this, this.blackAppearence);
+	target3 = new MyTarget(this, this.blackAppearence);
+
+	this.targets = [target1, target2, target3];
+
+
+	this.setUpdatePeriod(20);
 
 };
 
@@ -209,20 +211,28 @@ LightingScene.prototype.display = function() {
 		this.translate(0,1.5,0);
 		this.rotate(90* degToRad, 0, 1, 0);
 		this.submarine.display();
-		
-	
 	this.popMatrix();
 
 
 	this.pushMatrix();
 	    this.translate(1, 1, 0);
 	    this.torpedo.display();
-	    this.popMatrix();
+	this.popMatrix();
 
 	this.pushMatrix();
-	    this.translate(1, 1, 0);
-	    this.target.display();
+	    this.translate(0, 0.5, 0);
+	    this.targets[0].display();
 	this.popMatrix();
+
+	this.pushMatrix();
+	    this.translate(0, 0.5, 0);
+	    this.targets[1].display();
+	this.popMatrix();
+
+	this.pushMatrix();
+	    this.translate(0, 0.5, 0);
+	    this.targets[2].display();
+    this.popMatrix();
 
 
 };
