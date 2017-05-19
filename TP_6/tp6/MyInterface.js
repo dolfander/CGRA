@@ -93,6 +93,9 @@ MyInterface.prototype.processKeyboard = function(event) {
 	else if (x == 83 || x == 115)	{
 		this.scene.submarine.pushBackward(0.03);
 	}
+	else if(x== 81 || x== 113 ){
+		this.scene.subamarine.moveUp(0.03);
+	}
 
 
 };

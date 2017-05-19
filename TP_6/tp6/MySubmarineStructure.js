@@ -68,7 +68,7 @@ MySubmarineStructure.prototype.display = function() {
 		this.scene.rotate(90*degToRad,0,0,1);
 		this.scene.rotate(this.rotationAngle*degToRad,1,0,0);
 		this.scene.scale(1.5,0.5,1.2);
-		this.scene.translate(-1.23,0,-0.3);
+		this.scene.translate(-1.25,-0.15,-0.3);
 		
 		this.verticalRudder.display();
 	this.scene.popMatrix();

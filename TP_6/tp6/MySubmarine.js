@@ -16,6 +16,7 @@
 	this.z1 =-0.0;
 	this.speed = 0;
 	this.angspeed = 0;
+	this.horizontal_speed =0;
 
 	this.structure = new MySubmarineStructure(this.scene,material);
 	this.time = 0;
@@ -51,6 +52,12 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.rightHelix.update(1,this.speed);
 	this.structure.leftHelix.update(0,this.speed);
 		
+	if(this.structure.rotationAngle >0)
+	this.structure.rotationAngle -= .5;
+
+	if(this.structure.rotationAngle <0)
+	this.structure.rotationAngle += .5;
+
 	
     this.time = currTime;
 }
@@ -61,6 +68,7 @@ MySubmarine.prototype.moveForward = function(amount) {
 
 	this.z+= zvalue;
   this.x+= xvalue;
+  this.y += this.horizontal_speed;
 }
 
 MySubmarine.prototype.pushForward = function(amount) {
@@ -78,8 +86,10 @@ MySubmarine.prototype.pushLeft = function(amount) {
 		this.angspeed = this.max_angspeed;
 	else this.angspeed = -this.max_angspeed;
 	
-	if(this.structure.rotationAngle < 45)
-	this.structure.rotationAngle += 1;
+	if(this.structure.rotationAngle > -45)
+	this.structure.rotationAngle -= 5;
+	
+	
 }
 MySubmarine.prototype.pushRight = function(amount) {
 	if(Math.abs(this.angspeed -amount) <= this.max_angspeed)
@@ -88,8 +98,10 @@ MySubmarine.prototype.pushRight = function(amount) {
 		this.angspeed = this.max_angspeed;
 	else this.angspeed = -this.max_angspeed;
 	
-	if(this.structure.rotationAngle < -45)
-	this.structure.rotationAngle -= 1;
+	
+
+if(this.structure.rotationAngle < 45)
+	this.structure.rotationAngle += 5;
 
 }
 
@@ -110,4 +122,13 @@ MySubmarine.prototype.rotateRight = function(amount) {
 
 MySubmarine.prototype.setMaterial = function(material) {
 	this.structure.setMaterial(material);
+}
+
+MySubmarine.prototype.moveUp = function(amount) {
+
+   if(Math.abs(this.horizontal_speed + amount) <= this.max_speed)
+  		this.horizontal_speed+=amount;
+  	else if(this.horizontal_speed > 0)
+  		this.horizontal_speed = this.max_speed;
+  else this.horizontal_speed = -this.max_speed;
 }

@@ -50,7 +50,7 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setDiffuse(1,1,1,1);
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
-	this.metalAppearence.loadTexture("../resources/images/rusty.jpg");
+	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
 	
 	
 
@@ -62,11 +62,13 @@ LightingScene.prototype.init = function(application) {
 	this.trippyAppearence.loadTexture("../resources/images/trippy.jpg");
 	
 	
+	
 	this.blackAppearence = new CGFappearance(this);
-	this.blackAppearence.setAmbient(0,0,0,0);
-	this.blackAppearence.setDiffuse(0,0,0,0);
-	this.blackAppearence.setSpecular(0,0,0,0);
-	this.blackAppearence.setShininess(0);
+	this.blackAppearence.setAmbient(0.3,0.3,0.3,1);
+	this.blackAppearence.setDiffuse(1,1,1,1);
+	this.blackAppearence.setSpecular(0.1,0.1,0.1,1);
+	this.blackAppearence.setShininess(100);
+	this.blackAppearence.loadTexture("../resources/images/rusty_black.jpg");
 
 	this.submarineAppearances = [this.metalAppearence, this.trippyAppearence];
 	this.matoptions = [ 'Normal', 'Trippy'];
