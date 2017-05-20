@@ -105,6 +105,9 @@ MyInterface.prototype.processKeyboard = function(event) {
 	else if(x==76 || x == 108 ){
 		this.scene.submarine.periscopeDown();
 	}
+	else if(x==70 || x == 102 ){
+		this.scene.deployTorpedo();
+	}
 
 
 

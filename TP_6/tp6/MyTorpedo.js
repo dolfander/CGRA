@@ -34,11 +34,13 @@ function MyTorpedo(scene, material,x,y,z, h_angle, v_angle) {
     this.glassAppearence.setShininess(10);
     this.glassAppearence.loadTexture("../resources/images/glass.jpg");
 
-    this.target = this.scene.getTarget();
+    //this.target = this.scene.getTarget();
+    //this.targetExploded = false;
 
-    this.targetExploded = false;
+    // mudar para lista de alvos
+    this.target = new MyTarget(this.scene, this.blackAppearence);
 
-    //this.distance = Math.sqrt( Math.pow((this.target.getX()-this.x),2) + Math.pow((this.target.getY()-this.y),2) + Math.pow((this.target.getZ()-this.z),2));
+    this.distance = Math.sqrt( Math.pow((this.target.getX()-this.x),2) + Math.pow((this.target.getY()-this.y),2) + Math.pow((this.target.getZ()-this.z),2));
 
     this.initBuffers();
 };

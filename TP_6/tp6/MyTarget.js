@@ -8,9 +8,11 @@
 function MyTarget(scene, material) {
   CGFobject.call(this, scene);
 
-  this.x = Math.floor(Math.random() * 10);
+  this.x = Math.floor((Math.random() * 10) -5 );
   this.y = 0;
-  this.z = Math.floor(Math.random() * 12);
+  this.z = Math.floor((Math.random() * - 10) + 3);
+
+  var inTarget = false;
 
   this.structure = new MyTargetStructure(this.scene, material);
 

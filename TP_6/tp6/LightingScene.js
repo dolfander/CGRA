@@ -9,6 +9,10 @@ function LightingScene() {
 	CGFscene.call(this);
 
 	this.targets = new Array();
+	this.target1;
+
+	this.torpedo_appear;
+	this.targetExploded;
 
 }
 
@@ -16,15 +20,30 @@ LightingScene.prototype = Object.create(CGFscene.prototype);
 LightingScene.prototype.constructor = LightingScene;
 
 LightingScene.prototype.getTarget = function() {
-  //  var target = this.targetList.shift();
 
-  //  this.toExplode = target;
-  //  this.targetList.push(new MyTarget(this));
+		var target = this.targets.shift();
 
-		var target = this.targets.shift;
+		this.toExplode = target;
+		this.targets.push(new MyTarget(this));
 
     return target;
 }
+
+//Activated on pressing 'F' or 'f'
+LightingScene.prototype.deployTorpedo = function() {
+    this.targetExploded = false;
+
+    if(this.torpedo_appear == false)
+        this.torpedo_appear = true;
+    else
+        if (this.torpedo_appear == true)
+            this.torpedo_appear = false;
+
+    this.torpedo = new MyMovingTorpedo(this,this.submarine.getX(),this.submarine.getY(),this.submarine.getZ(), this.submarine.getH_angle(), this.submarine.getV_angle());
+
+    //if(String(this.toExplode) != "undefined")
+        //this.targetExplosion = new MyExplosion(this, this.toExplode.getX(), this.toExplode.getY(), this.toExplode.getZ());
+  }
 
 
 LightingScene.prototype.init = function(application) {
@@ -48,6 +67,8 @@ LightingScene.prototype.init = function(application) {
 	this.Light4 = true;
 	this.pause = false;
 
+	this.torpedo_appear = false;
+	this.targetExploded = false;
 
 	this.materialDefault = new CGFappearance(this);
 
@@ -93,13 +114,16 @@ LightingScene.prototype.init = function(application) {
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
 
-	this.torpedo = new MyTorpedo(this, this.metalAppearence,0,0,0,0,0); //testing
+	//this.torpedo = new MyTorpedo(this, this.metalAppearence,0,0,0,0,0); //testing
 
-  target1 = new MyTarget(this, this.blackAppearence);
-	target2 = new MyTarget(this, this.blackAppearence);
-	target3 = new MyTarget(this, this.blackAppearence);
+  this.target1 = new MyTarget(this, this.blackAppearence);
+	this.targets.push(this.target1);
+	this.target2 = new MyTarget(this, this.blackAppearence);
+	this.targets.push(this.target2);
+	this.target3 = new MyTarget(this, this.blackAppearence);
+	this.targets.push(this.target3);
 
-	this.targets = [target1, target2, target3];
+	//this.targets = [target1, target2, target3];
 
 
 	this.setUpdatePeriod(20);
@@ -208,7 +232,15 @@ LightingScene.prototype.display = function() {
 
 	// ---- END Background, camera and axis setup
 
+	if (this.targetExploded == true)
+ 		if(this.targetExplosion.getState()=='RUN')
+ 		{
+ 				this.targetExplosion.display();
+ 				this.torpedo_appear = false;
+ 		}
 
+ if(this.torpedo_appear == true)
+ 		this.torpedo.display();
 
 
 	this.pushMatrix();
@@ -229,12 +261,17 @@ LightingScene.prototype.display = function() {
 		this.submarine.display();
 	this.popMatrix();
 
-
+/*
 	this.pushMatrix();
 	    this.translate(1, 1, 0);
 	    this.torpedo.display();
 	this.popMatrix();
+*/
 
+
+
+
+/*
 	this.pushMatrix();
 	    this.translate(0, 0.5, 0);
 	    this.targets[0].display();
@@ -249,7 +286,17 @@ LightingScene.prototype.display = function() {
 	    this.translate(0, 0.5, 0);
 	    this.targets[2].display();
     this.popMatrix();
+*/
 
+if(this.targetExploded == false)
+		if(String(this.toExplode) != "undefined")
+				this.toExplode.display();
+
+
+for(i = 0; i < this.targets.length; i++){
+	this.translate(0,0.5,0);
+	this.targets[i].display();
+}
 
 };
 
@@ -261,6 +308,15 @@ LightingScene.prototype.update = function(currTime){
 		this.post.update(currTime);
 		this.submarine.update(currTime);
 	}
+
+	if(this.torpedo_appear == true)
+			this.targetExploded =  this.torpedo.update(currTime,this.submarine.getX(),this.submarine.getY(),this.submarine.getZ());
+
+			//	Explosion
+
+	/*if(this.targetExploded == true){
+			this.animationTime = this.targetExplosion.update(currTime);}
+*/
 
 
 };
