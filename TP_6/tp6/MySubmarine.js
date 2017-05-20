@@ -23,8 +23,8 @@
 	this.structure = new MySubmarineStructure(this.scene,material);
 	this.time = 0;
 	this.max_h_speed = .5;
-	this.max_v_speed = 0.2;
-	this.max_h_angspeed = 0.8;
+	this.max_v_speed = 0.1;
+	this.max_h_angspeed = 0.1;
 	this.max_v_angspeed = 1;
 
  };
@@ -56,7 +56,7 @@ MySubmarine.prototype.update = function(currTime) {
 	this.v_speed *=.80;
 	
 	this.h_angspeed *=0.95;
-	this.v_angspeed *=0.95;
+	this.v_angspeed *=0.80;
 	
 	
 
@@ -82,10 +82,10 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.top.v_rotation_ang -= .5;
 
 if(this.a<0)
-	this.a+= 0.05;
+	this.a+= 0.2;
 
 if(this.a>0)
-	this.a-= 0.05;
+	this.a-= 0.2;
 
 
     this.time = currTime;
@@ -153,7 +153,7 @@ MySubmarine.prototype.rotateRight = function(amount) {
 
 MySubmarine.prototype.rotateUp = function(amount) {
 
-if(this.a > -10  &&this.a< 10)
+//if(this.a > -10  &&this.a< 10)
   this.a -= amount;
 }
 
@@ -179,8 +179,8 @@ MySubmarine.prototype.pushUp = function(amount) {
      this.v_speed = this.max_v_speed;
   else this.v_speed = -this.max_v_speed;
   
-  if(Math.abs(this.v_angspeed + 0.5) <= this.max_v_angspeed)
-		this.v_angspeed+=0.5;
+  if(Math.abs(this.v_angspeed + 0.6) <= this.max_v_angspeed)
+		this.v_angspeed+=0.6;
 	else if(this.v_angspeed > 0)
 		this.v_angspeed = this.max_v_angspeed;
 	else this.v_angspeed = -this.max_v_angspeed;
@@ -198,8 +198,8 @@ MySubmarine.prototype.pushUp = function(amount) {
 
 MySubmarine.prototype.pushDown = function(amount) {
 	
-	if(Math.abs(this.v_angspeed -0.5) <= this.max_v_angspeed)
-		this.v_angspeed-=0.5;
+	if(Math.abs(this.v_angspeed -0.6) <= this.max_v_angspeed)
+		this.v_angspeed-=0.6;
 	else if(this.v_angspeed > 0)
 		this.v_angspeed = this.max_v_angspeed;
 	else this.v_angspeed = -this.max_v_angspeed;
