@@ -70,9 +70,9 @@ LightingScene.prototype.init = function(application) {
 
 	this.trippyAppearence = new CGFappearance(this);
 	this.trippyAppearence.setAmbient(0.3,0.3,0.3,1);
-	this.trippyAppearence.setDiffuse(1,1,1,1);
+	this.trippyAppearence.setDiffuse(0.4,0.4,0.4,1);
 	this.trippyAppearence.setSpecular(0.1,0.1,0.1,1);
-	this.trippyAppearence.setShininess(100);
+	this.trippyAppearence.setShininess(10);
 	this.trippyAppearence.loadTexture("../resources/images/trippy.jpg");
 
 
@@ -116,10 +116,10 @@ LightingScene.prototype.initLights = function() {
 
 
 	// Positions for four lights
-	this.lights[0].setPosition(-5, 6, 5, 1);
-	this.lights[1].setPosition(-5, 6.0, -5, 1.0);
-	this.lights[2].setPosition(5, 6.0, 5, 1.0);
-	this.lights[3].setPosition(5, 6, -5, 1);
+	this.lights[0].setPosition(-5, 15, 5, 1);
+	this.lights[1].setPosition(-5, 15, -5, 1.0);
+	this.lights[2].setPosition(5, 15, 5, 1.0);
+	this.lights[3].setPosition(5, 15, -5, 1);
 
 	this.lights[0].setAmbient(0.1, .1, .1, 1);
 	this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
