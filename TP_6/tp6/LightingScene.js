@@ -8,15 +8,29 @@ var FLOOR_HEIGHT = 30;
 function LightingScene() {
 	CGFscene.call(this);
 
+	this.targets = new Array();
+
 }
 
 LightingScene.prototype = Object.create(CGFscene.prototype);
 LightingScene.prototype.constructor = LightingScene;
 
+LightingScene.prototype.getTarget = function() {
+  //  var target = this.targetList.shift();
+
+  //  this.toExplode = target;
+  //  this.targetList.push(new MyTarget(this));
+
+		var target = this.targets.shift;
+
+    return target;
+}
+
+
 LightingScene.prototype.init = function(application) {
 	CGFscene.prototype.init.call(this, application);
 
-	this.enableTextures(true);  
+	this.enableTextures(true);
 	this.initCameras();
 	this.initLights();
 
@@ -51,8 +65,8 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
-	
-	
+
+
 
 	this.trippyAppearence = new CGFappearance(this);
 	this.trippyAppearence.setAmbient(0.3,0.3,0.3,1);
@@ -60,9 +74,9 @@ LightingScene.prototype.init = function(application) {
 	this.trippyAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.trippyAppearence.setShininess(100);
 	this.trippyAppearence.loadTexture("../resources/images/trippy.jpg");
-	
-	
-	
+
+
+
 	this.blackAppearence = new CGFappearance(this);
 	this.blackAppearence.setAmbient(0.3,0.3,0.3,1);
 	this.blackAppearence.setDiffuse(1,1,1,1);
@@ -79,9 +93,9 @@ LightingScene.prototype.init = function(application) {
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
 
-	this.torpedo = new MyTorpedo(this, this.metalAppearence);
+	this.torpedo = new MyTorpedo(this, this.metalAppearence,0,0,0,0,0); //testing
 
-    target1 = new MyTarget(this, this.blackAppearence);
+  target1 = new MyTarget(this, this.blackAppearence);
 	target2 = new MyTarget(this, this.blackAppearence);
 	target3 = new MyTarget(this, this.blackAppearence);
 
@@ -100,7 +114,7 @@ LightingScene.prototype.initLights = function() {
 	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
 
 
-	
+
 	// Positions for four lights
 	this.lights[0].setPosition(-5, 6, 5, 1);
 	this.lights[1].setPosition(-5, 6.0, -5, 1.0);
@@ -135,33 +149,33 @@ LightingScene.prototype.initLights = function() {
 
 
 	this.setGlobalAmbientLight(0,0,0);
-	
+
 
 };
 
 LightingScene.prototype.updateLights = function() {
 	for (i = 0; i < this.lights.length; i++)
 		this.lights[i].update();
-	
+
 	// Ligtht1
 	if(this.Light1)
 		this.lights[0].enable();
-	else 
+	else
 		this.lights[0].disable();
-	
+
 	// Light2
 	if(this.Light2)
 		this.lights[1].enable();
-	else 
+	else
 		this.lights[1].disable();
-	
+
 	// Light3
 	if(this.Light3)
 		this.lights[2].enable();
-	else 
+	else
 		this.lights[2].disable();
-	
-	
+
+
 	// Light4
 	if(this.Light4)
 		this.lights[3].enable();
@@ -240,9 +254,9 @@ LightingScene.prototype.display = function() {
 };
 
 LightingScene.prototype.update = function(currTime){
-	
+
 	this.submarine.setMaterial(this.submarineAppearances[this.Texture]);
-	
+
 	if(!this.pause){
 		this.post.update(currTime);
 		this.submarine.update(currTime);
@@ -250,6 +264,8 @@ LightingScene.prototype.update = function(currTime){
 
 
 };
+
+
 
 
 
