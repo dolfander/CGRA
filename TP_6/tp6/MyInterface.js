@@ -40,8 +40,8 @@ MyInterface.prototype.init = function(application) {
 	// add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
 	// e.g. this.option1=true; this.option2=false;
 
-	
-	
+
+
 	group.add(this.scene, 'Light1');
 	group.add(this.scene, 'Light2');
 	group.add(this.scene, 'Light3');
@@ -82,7 +82,7 @@ MyInterface.prototype.processKeyboard = function(event) {
 
 	if (x == 65 || x == 97){
 		this.scene.submarine.pushLeft(-.02);
-	
+
 	}
 	else if (x == 68 ||x == 100)	{
 		this.scene.submarine.pushRight(-.02)
@@ -99,6 +99,13 @@ MyInterface.prototype.processKeyboard = function(event) {
 	else if(x==69 || x == 101 ){
 		this.scene.submarine.pushDown(0.01);
 	}
+	else if(x==80 || x == 112 ){
+		this.scene.submarine.periscopeUp();
+	}
+	else if(x==76 || x == 108 ){
+		this.scene.submarine.periscopeDown();
+	}
+
 
 
 };

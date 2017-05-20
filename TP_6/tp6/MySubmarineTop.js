@@ -16,7 +16,7 @@ function MySubmarineTop(scene,material) {
 	this.glassAppearence.loadTexture("../resources/images/glass.jpg");
 
   this.v_rotation_ang=0;
-
+  this.height =0;
 
 
  this.trapezius.initBuffers();
@@ -37,8 +37,8 @@ MySubmarineTop.prototype.display = function() {
 	this.cylinder.display();
 
 	this.scene.pushMatrix();
-	this.scene.translate(0,0,1);
-	this.surface.display();
+	   this.scene.translate(0,0,1);
+	   this.surface.display();
 	this.scene.popMatrix();
 
 
@@ -47,13 +47,16 @@ MySubmarineTop.prototype.display = function() {
 	this.scene.blackAppearence.apply();
 
 	this.scene.pushMatrix();
-	this.scene.translate(0.3,0,0);
-	this.scene.scale(1,1,0.8);
+	  this.scene.translate(0.3,0,this.height);
+	  this.scene.scale(1,1,0.8);
+
 
 	this.scene.pushMatrix();
-	this.scene.scale(0.1,0.1,3);
-	this.cylinder.display();
+	  this.scene.scale(0.1,0.1,3);
+	  this.cylinder.display();
 	this.scene.popMatrix();
+
+
 
 
 	this.scene.pushMatrix();
@@ -83,6 +86,7 @@ MySubmarineTop.prototype.display = function() {
 
 	this.scene.popMatrix();
 
+
 	// Trapezius
 
 	this.scene.blackAppearence.apply();
@@ -95,6 +99,7 @@ MySubmarineTop.prototype.display = function() {
 	this.scene.translate(-0.75,1.,-0.2);
 	this.trapezius.display();
 	this.scene.popMatrix();
+
 
 
 

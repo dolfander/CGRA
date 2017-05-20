@@ -20,7 +20,6 @@ serialInclude([
 	'MySemiSphere.js',
 	'MySubmarineTop.js',
 	'MyTrapezius.js',
-	'MyTrapeziusAux.js',
 	'MyHelix.js',
     'MyTorpedo.js',
     'MyTarget.js',

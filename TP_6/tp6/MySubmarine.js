@@ -145,7 +145,6 @@ MySubmarine.prototype.moveUp = function(amount) {
 
 		this.y += amount;
 
-
 }
 
 MySubmarine.prototype.pushUp = function(amount) {
@@ -182,5 +181,18 @@ MySubmarine.prototype.pushDown = function(amount) {
     	this.structure.v_rotation_ang += 2.5;
 
 
+}
+
+MySubmarine.prototype.periscopeUp = function() {
+
+  if(this.structure.top.height < 0.5)
+    this.structure.top.height += 0.01;
+
+}
+
+MySubmarine.prototype.periscopeDown = function() {
+
+  if(this.structure.top.height > -0.5)
+    this.structure.top.height -= 0.01;
 
 }
