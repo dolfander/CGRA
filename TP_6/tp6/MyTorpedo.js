@@ -38,6 +38,7 @@ function MyTorpedo(scene, material,x,y,z, h_angle, v_angle) {
 
     this.targetExploded = false;
 
+    //this.distance = Math.sqrt( Math.pow((this.target.getX()-this.x),2) + Math.pow((this.target.getY()-this.y),2) + Math.pow((this.target.getZ()-this.z),2));
 
     this.initBuffers();
 };
