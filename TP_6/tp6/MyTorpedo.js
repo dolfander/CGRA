@@ -137,13 +137,13 @@ MyTorpedo.prototype.update= function(currTime){
 	this.h_bezier = Math.atan2(this.diferenca.x, this.diferenca.z);
 	this.v_bezier = Math.atan2(Math.abs(this.diferenca.y), Math.abs(this.diferenca.z));
 
-	if (this.t < 0.8) {
+	if (this.t < 0.75) {
 		this.x = result.x;
 		this.y = result.y;
 		this.z = result.z;
 	}
 
-	if (this.t > 0.8)
+	if (this.t > 0.75)
 		this.targetExploded = true;
 
 	return this.targetExploded;
