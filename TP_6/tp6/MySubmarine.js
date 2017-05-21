@@ -6,9 +6,9 @@
  function MySubmarine(scene,material) {
  	CGFobject.call(this,scene);
 
-	this.x = -7;
-	this.y = 0;
-	this.z = 0;
+	this.x = 7;
+	this.y = 5;
+	this.z = 3;
 
 	this.a = 0;
 	this.b = 0;
@@ -252,9 +252,11 @@ MySubmarine.prototype.getZ = function (){
 }
 
 MySubmarine.prototype.getH_angle  = function (){
-	return this.h_angspeed;
+  //return this.h_speed;
+  return this.h_angspeed;
 }
 
 MySubmarine.prototype.getV_angle  = function (){
 	return this.v_angspeed;
+  //return this.v_speed;
 }

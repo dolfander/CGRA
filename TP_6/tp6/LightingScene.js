@@ -10,6 +10,7 @@ function LightingScene() {
 
 	this.targets = new Array();
 	this.target1;
+	this.updatePeriod = 0;
 
 	this.torpedo_appear;
 	this.targetExploded;
@@ -39,7 +40,10 @@ LightingScene.prototype.deployTorpedo = function() {
         if (this.torpedo_appear == true)
             this.torpedo_appear = false;
 
-    this.torpedo = new MyMovingTorpedo(this, this.blackAppearence,this.submarine.getX(),this.submarine.getY(),this.submarine.getZ(), this.submarine.getH_angle(), this.submarine.getV_angle());
+    this.torpedo = new MyMovingTorpedo(this, this.blackAppearence,this.submarine.getZ(),this.submarine.getY(),-(this.submarine.getX()), this.submarine.getH_angle(), this.submarine.getV_angle());
+
+		//this.torpedo = new MyMovingTorpedo(this, this.blackAppearence,3,5,-7, this.submarine.getH_angle(), this.submarine.getV_angle());
+
 
     if(String(this.toExplode) != "undefined")
         this.targetExplosion = new MyExplosion(this, this.toExplode.getX(), this.toExplode.getY(), this.toExplode.getZ());
@@ -69,6 +73,9 @@ LightingScene.prototype.init = function(application) {
 
 	this.torpedo_appear = false;
 	this.targetExploded = false;
+
+	this.updatePeriod=50;
+	this.setUpdatePeriod(this.updatePeriod);
 
 	this.materialDefault = new CGFappearance(this);
 
@@ -300,9 +307,9 @@ LightingScene.prototype.update = function(currTime){
 
 };
 
-
-
-
+LightingScene.prototype.getUpdatePeriod = function() {
+    return this.updatePeriod;
+}
 
 LightingScene.prototype.doSomething = function(){
 
