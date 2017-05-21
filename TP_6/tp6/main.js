@@ -24,6 +24,7 @@ serialInclude([
     'MyTorpedo.js',
     'MyTarget.js',
     'MyTargetStructure.js',
+	'MyInvertedSemiSphere.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

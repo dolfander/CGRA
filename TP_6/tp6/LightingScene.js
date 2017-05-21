@@ -1,7 +1,7 @@
 var degToRad = Math.PI / 180.0;
 
-var	FLOOR_WIDTH =30;
-var FLOOR_HEIGHT = 30;
+var	FLOOR_WIDTH =100;
+var FLOOR_HEIGHT = 100;
 
 
 
@@ -86,6 +86,13 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
+	
+	this.oceanAppearence = new CGFappearance(this);
+	this.oceanAppearence.setAmbient(0.3,0.3,0.3,1);
+	this.oceanAppearence.setDiffuse(1,1,1,1);
+	this.oceanAppearence.setSpecular(0.1,0.1,0.1,1);
+	this.oceanAppearence.setShininess(100);
+	this.oceanAppearence.loadTexture("../resources/images/ocean.jpg");
 
 
 
@@ -113,6 +120,7 @@ LightingScene.prototype.init = function(application) {
 	this.floor = new MyPlane(this,0,50,0,50,100);
 	this.post = new MyPost(this);
 	this.helix = new MyHelix(this);
+	this.background = new MyInvertedSemiSphere(this,50,19);
 
 	//this.torpedo = new MyTorpedo(this, this.metalAppearence,0,0,0,0,0); //testing
 
@@ -135,15 +143,15 @@ LightingScene.prototype.initCameras = function() {
 };
 
 LightingScene.prototype.initLights = function() {
-	this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
+	this.setGlobalAmbientLight(0.3,0.3,0.3, 1.0);
 
 
 
 	// Positions for four lights
-	this.lights[0].setPosition(-5, 15, 5, 1);
-	this.lights[1].setPosition(-5, 15, -5, 1.0);
-	this.lights[2].setPosition(5, 15, 5, 1.0);
-	this.lights[3].setPosition(5, 15, -5, 1);
+	this.lights[0].setPosition(-10, 15, 10, 1);
+	this.lights[1].setPosition(-10, 15, -10, 1.0);
+	this.lights[2].setPosition(10, 15, 10, 1.0);
+	this.lights[3].setPosition(10, 15, -10, 1);
 
 	this.lights[0].setAmbient(0.1, .1, .1, 1);
 	this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
@@ -260,6 +268,17 @@ LightingScene.prototype.display = function() {
 		this.rotate(90* degToRad, 0, 1, 0);
 		this.submarine.display();
 	this.popMatrix();
+	
+	this.oceanAppearence.apply();
+	
+	this.pushMatrix();
+		this.rotate(-90*degToRad,1,0,0);
+		this.scale(50,50,50);
+		this.background.display();
+	
+	this.popMatrix();
+	
+	this.materialDefault.apply();
 
 /*
 	this.pushMatrix();
@@ -322,9 +341,6 @@ LightingScene.prototype.update = function(currTime){
 };
 
 
-
-
-
-LightingScene.prototype.doSomething = function(){
+LightingScene.prototype.Controls = function(){
 
 };
