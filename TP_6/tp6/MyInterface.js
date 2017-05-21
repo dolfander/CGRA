@@ -81,11 +81,11 @@ MyInterface.prototype.processKeyboard = function(event) {
 
 
 	if (x == 65 || x == 97){
-		this.scene.submarine.pushLeft(-.025);
+		this.scene.submarine.pushLeft(-.005);
 	
 	}
 	else if (x == 68 ||x == 100)	{
-		this.scene.submarine.pushRight(-.025)
+		this.scene.submarine.pushRight(-.005)
 	}
 	else if (x == 87 || x == 119){
 		this.scene.submarine.pushForward(0.03);
@@ -94,10 +94,10 @@ MyInterface.prototype.processKeyboard = function(event) {
 		this.scene.submarine.pushBackward(0.03);
 	}
 	else if(x== 81 || x== 113 ){
-		this.scene.submarine.pushUp(0.01);
+		this.scene.submarine.pushUp(0.001);
 	}
 	else if(x==69 || x == 101 ){
-		this.scene.submarine.pushDown(0.01);
+		this.scene.submarine.pushDown(0.001);
 	}
 	else if(x==80 || x == 112 ){
 		this.scene.submarine.periscopeUp();

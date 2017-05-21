@@ -1,5 +1,7 @@
-function MyMovingTorpedo(scene,x,y,z, h_angle, v_angle) {
+function MyMovingTorpedo(scene,material,x,y,z, h_angle, v_angle) {
     CGFobject.call(this, scene);
+
+    this.material =  material;
 
     this.h_angle = h_angle;
     this.v_angle = v_angle;
@@ -8,7 +10,7 @@ function MyMovingTorpedo(scene,x,y,z, h_angle, v_angle) {
     this.y=y;
     this.z=z;
 
-    this.torpedo = new MyTorpedo(this.scene,this.x,this.y,this.z,this.h_angle,this.v_angle);
+    this.torpedo = new MyTorpedo(this.scene,this.material, this.x,this.y,this.z,this.h_angle,this.v_angle);
 };
 
 MyMovingTorpedo.prototype = Object.create(CGFobject.prototype);

@@ -6,7 +6,7 @@
  function MySubmarine(scene,material) {
  	CGFobject.call(this,scene);
 
-	this.x = 5;
+	this.x = -7;
 	this.y = 0;
 	this.z = 0;
 
@@ -24,7 +24,7 @@
 	this.time = 0;
 	this.max_h_speed = .5;
 	this.max_v_speed = 0.1;
-	this.max_h_angspeed = 0.1;
+	this.max_h_angspeed = 0.07;
 	this.max_v_angspeed = 1;
 
  };
@@ -36,7 +36,7 @@ MySubmarine.prototype.display = function() {
 	this.scene.pushMatrix();
 
 		this.scene.translate(this.x, this.y,this.z);
-	
+
 		this.scene.rotate(this.b, 0,1,0);
 		this.scene.rotate(this.a*degToRad, 1,0,0);
 		this.scene.rotate(this.c, 0,0,1);
@@ -51,14 +51,14 @@ MySubmarine.prototype.update = function(currTime) {
 
   	this.rotateRight(this.h_angspeed);
 	this.rotateUp(this.v_angspeed);
-	
+
   	this.h_speed *=.99;
 	this.v_speed *=.80;
-	
+
 	this.h_angspeed *=0.95;
 	this.v_angspeed *=0.80;
-	
-	
+
+
 
 	this.structure.rightHelix.update(1,this.h_speed);
 	this.structure.leftHelix.update(0,this.h_speed);
@@ -82,10 +82,10 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.top.v_rotation_ang -= .5;
 
 if(this.a<0)
-	this.a+= 0.2;
+	this.a+= 0.3;
 
 if(this.a>0)
-	this.a-= 0.2;
+	this.a-= 0.3;
 
 
     this.time = currTime;
@@ -178,7 +178,7 @@ MySubmarine.prototype.pushUp = function(amount) {
    else if(this.v_speed > 0)
      this.v_speed = this.max_v_speed;
   else this.v_speed = -this.max_v_speed;
-  
+
   if(Math.abs(this.v_angspeed + 0.6) <= this.max_v_angspeed)
 		this.v_angspeed+=0.6;
 	else if(this.v_angspeed > 0)
@@ -192,12 +192,12 @@ MySubmarine.prototype.pushUp = function(amount) {
     this.structure.v_rotation_ang -= 2.5;
 
 
-	
+
 
 }
 
 MySubmarine.prototype.pushDown = function(amount) {
-	
+
 	if(Math.abs(this.v_angspeed -0.6) <= this.max_v_angspeed)
 		this.v_angspeed-=0.6;
 	else if(this.v_angspeed > 0)
@@ -219,8 +219,8 @@ MySubmarine.prototype.pushDown = function(amount) {
 
     if(this.structure.v_rotation_ang < 20)
     	this.structure.v_rotation_ang += 2.5;
-	
-	 
+
+
 
 
 }
@@ -237,4 +237,24 @@ MySubmarine.prototype.periscopeDown = function() {
   if(this.structure.top.height > -0.5)
     this.structure.top.height -= 0.01;
 
+}
+
+MySubmarine.prototype.getX = function (){
+	return this.x;
+}
+
+MySubmarine.prototype.getY = function (){
+	return this.y;
+}
+
+MySubmarine.prototype.getZ = function (){
+	return this.z;
+}
+
+MySubmarine.prototype.getH_angle  = function (){
+	return this.h_angspeed;
+}
+
+MySubmarine.prototype.getV_angle  = function (){
+	return this.v_angspeed;
 }
