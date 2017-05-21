@@ -111,6 +111,7 @@ MyTorpedo.prototype.update= function(currTime){
 	this.lastTime = currTime;
 	var perSecond = (this.deltaTime/(60*1000));
 
+
 	if(perSecond>1)
 		perSecond=0;
 
@@ -136,13 +137,13 @@ MyTorpedo.prototype.update= function(currTime){
 	this.h_bezier = Math.atan2(this.diferenca.x, this.diferenca.z);
 	this.v_bezier = Math.atan2(Math.abs(this.diferenca.y), Math.abs(this.diferenca.z));
 
-	if (this.t < 1) {
+	if (this.t < 0.8) {
 		this.x = result.x;
 		this.y = result.y;
 		this.z = result.z;
 	}
 
-	if (this.t > 1)
+	if (this.t > 0.8)
 		this.targetExploded = true;
 
 	return this.targetExploded;
@@ -170,4 +171,8 @@ MyTorpedo.prototype.getHBezier = function() {
 
 MyTorpedo.prototype.getVBezier = function() {
 	return this.v_bezier;
+}
+
+MyTorpedo.prototype.getDistance = function() {
+	return this.distance;
 }

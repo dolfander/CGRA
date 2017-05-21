@@ -1,10 +1,11 @@
-function MyExplosion(scene,x,y,z) {
+function MyExplosion(scene,x,y,z, distance) {
   CGFobject.call(this, scene);
 
   this.lastTime = 0;
   this.deltaTime = 0;
   this.startTime = 0;
   this.animationTime = 0;
+  this.distance = distance;
 
   this.state='RUN';
 
@@ -135,10 +136,10 @@ MyExplosion.prototype.update = function(currTime) {
   this.animationTime+=perSecond;
 
 
-  if(this.animationTime<0.2){
-    this.Dx+=perSecond*10;
-    this.Dy+=perSecond*10;
-    this.Dz+=perSecond*10;
+  if(this.animationTime<(0.1*this.distance)){
+    this.Dx+=perSecond*7;
+    this.Dy+=perSecond*7;
+    this.Dz+=perSecond*7;
   }
   else
   this.state='STOP';

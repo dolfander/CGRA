@@ -32,3 +32,7 @@ MyMovingTorpedo.prototype.update = function(currTime) {
 
     return bool;
 }
+
+MyMovingTorpedo.prototype.getDistance = function() {
+	return this.torpedo.getDistance();
+}

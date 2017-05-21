@@ -46,7 +46,7 @@ LightingScene.prototype.deployTorpedo = function() {
 
 
     if(String(this.toExplode) != "undefined")
-        this.targetExplosion = new MyExplosion(this, this.toExplode.getX(), this.toExplode.getY(), this.toExplode.getZ());
+        this.targetExplosion = new MyExplosion(this, this.toExplode.getX(), this.toExplode.getY(), this.toExplode.getZ(), this.torpedo.getDistance());
   }
 
 
@@ -137,12 +137,6 @@ LightingScene.prototype.init = function(application) {
 	this.targets.push(this.target2);
 	this.target3 = new MyTarget(this, this.blackAppearence);
 	this.targets.push(this.target3);
-
-
-	this.explosion = new MyExplosion(this, 2, 2 , 3);
-
-	//this.targets = [target1, target2, target3]; // array
-
 
 	this.setUpdatePeriod(20);
 
@@ -314,13 +308,11 @@ LightingScene.prototype.update = function(currTime){
 		this.post.update(currTime);
 		this.submarine.update(currTime);
 
-
-		if(this.torpedo_appear == true)
+		if(this.torpedo_appear == true){
 			this.targetExploded =  this.torpedo.update(currTime,this.submarine.getX(),this.submarine.getY(),this.submarine.getZ());
-
-			if(this.targetExploded == true){
-					this.animationTime = this.targetExplosion.update(currTime);}
-
+		}
+		if(this.targetExploded == true){
+			this.animationTime = this.targetExplosion.update(currTime);}
 
 	}
 
