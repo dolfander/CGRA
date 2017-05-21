@@ -28,14 +28,14 @@ MyTargetStructure.prototype.display = function () {
 
     this.scene.pushMatrix();
     this.scene.scale(0.5, 0.5, 0.5);
-    this.scene.translate(0, 0, -2);
+    this.scene.translate(0, 0, -0.5);
     this.cylinder.display();
     this.scene.popMatrix();
 
 
     this.scene.pushMatrix();
     this.scene.scale(0.5, 0.5, 0.5);
-    this.scene.translate(0, 0, -1);
+    this.scene.translate(0, 0, 0.5); // correto (0,0,1)
     this.targetAppearence.apply();
     this.front.display();
     this.scene.popMatrix();
@@ -44,7 +44,7 @@ MyTargetStructure.prototype.display = function () {
     this.scene.pushMatrix();
     this.scene.rotate(180 * degToRad, 0, 1, 0);
     this.scene.scale(0.5, 0.5, 0.5);
-    this.scene.translate(0, 0, 2);
+    this.scene.translate(0, 0, 0.5);
     this.targetAppearence.apply();
     this.back.display();
     this.scene.popMatrix();
