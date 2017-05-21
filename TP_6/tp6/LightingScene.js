@@ -270,6 +270,7 @@ LightingScene.prototype.display = function() {
 
 	this.pushMatrix();
 		this.translate(8,0,0);
+		this.scale(2.2,2.2,2.2);
 		this.post.display();
 	this.popMatrix();
 

@@ -22,7 +22,7 @@
 
 	this.structure = new MySubmarineStructure(this.scene,material);
 	this.time = 0;
-	this.max_h_speed = .5;
+	this.max_h_speed = .4;
 	this.max_v_speed = 0.1;
 	this.max_h_angspeed = 0.07;
 	this.max_v_angspeed = 1;

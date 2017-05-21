@@ -15,11 +15,13 @@ MyPost.prototype.constructor= MyPost;
 
 
 MyPost.prototype.display= function () {
+	
+	this.scene.blackAppearence.apply();
 
   this.scene.pushMatrix();
     this.scene.rotate(270 * degToRad, 1, 0, 0);
 		this.scene.scale(0.06,0.06,4.8);
-		this.scene.metalAppearence.apply();
+
     this.post.display();
   this.scene.popMatrix();
 

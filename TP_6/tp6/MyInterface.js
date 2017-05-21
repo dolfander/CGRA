@@ -81,11 +81,11 @@ MyInterface.prototype.processKeyboard = function(event) {
 
 
 	if (x == 65 || x == 97){
-		this.scene.submarine.pushLeft(-.005);
+		this.scene.submarine.pushLeft(-.003);
 	
 	}
 	else if (x == 68 ||x == 100)	{
-		this.scene.submarine.pushRight(-.005)
+		this.scene.submarine.pushRight(-.003)
 	}
 	else if (x == 87 || x == 119){
 		this.scene.submarine.pushForward(0.03);

@@ -59,9 +59,9 @@ MyHelix.prototype.display = function() {
 MyHelix.prototype.update = function(direction,speed) {
 	
 	if(direction == 1)
-		this.b+= 2*Math.PI *0.02 + speed;
+		this.b+= 2*Math.PI *0.02 + 1.2*speed;
 	else
-		this.b-= 2*Math.PI *0.02 +speed;
+		this.b-= 2*Math.PI *0.02 +1.2*speed;
 	
 
   	

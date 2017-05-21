@@ -22,6 +22,7 @@
  	this.vertices = [];
  	this.indices = [];
 	this.normals = [];
+	this.texCoords =[];
 
 	//Desenho da base do cilindro
 
@@ -37,6 +38,11 @@
 
 	this.indices.push(3,0,1);
   this.indices.push(3,1,2);
+  
+  this.texCoords.push(0,1);
+	this.texCoords.push(0,0);
+	this.texCoords.push(1,1);
+	this.texCoords.push(1,0);
 
 
 

@@ -31,7 +31,7 @@ MyClock.prototype.constructor= MyClock;
 
 MyClock.prototype.display= function () {
 
-	this.scene.metalAppearence.apply();
+		this.scene.blackAppearence.apply();
 
 	this.scene.pushMatrix();
 	this.scene.rotate(180 * degToRad, 0 ,1, 0)
@@ -74,7 +74,7 @@ MyClock.prototype.display= function () {
 			this.hourHand.display();
 			this.scene.popMatrix();
 
-	this.scene.materialDefault.apply();
+	//this.scene.materialDefault.apply();
 
 
 
