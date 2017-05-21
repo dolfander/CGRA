@@ -34,11 +34,15 @@ MySubmarineTop.prototype.display = function() {
 	// Tower
 
 
+	this.scene.pushMatrix();
+	this.scene.translate(0,0,-0.2);	
+	this.scene.scale(1,1,1.2);
+	
 	this.cylinder.display();
+	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	   this.scene.translate(0,0,1);
-	   this.scene.scale(1,1.2,1);
+	   this.scene.translate(0,0,0.95);
 	   this.surface.display();
 	this.scene.popMatrix();
 
