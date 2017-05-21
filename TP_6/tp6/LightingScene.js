@@ -25,7 +25,7 @@ LightingScene.prototype.getTarget = function() {
 		var target = this.targets.shift();
 
 		this.toExplode = target;
-		this.targets.push(new MyTarget(this, this.blackAppearence));
+		//this.targets.push(new MyTarget(this, this.blackAppearence));
 
     return target;
 }
@@ -93,7 +93,7 @@ LightingScene.prototype.init = function(application) {
 	this.metalAppearence.setSpecular(0.1,0.1,0.1,1);
 	this.metalAppearence.setShininess(100);
 	this.metalAppearence.loadTexture("../resources/images/metal.jpg");
-	
+
 	this.oceanAppearence = new CGFappearance(this);
 	this.oceanAppearence.setAmbient(0.3,0.3,0.3,1);
 	this.oceanAppearence.setDiffuse(1,1,1,1);
@@ -278,16 +278,16 @@ LightingScene.prototype.display = function() {
 		this.rotate(90* degToRad, 0, 1, 0);
 		this.submarine.display();
 	this.popMatrix();
-	
+
 	this.oceanAppearence.apply();
-	
+
 	this.pushMatrix();
 		this.rotate(-90*degToRad,1,0,0);
 		this.scale(50,50,50);
 		this.background.display();
-	
+
 	this.popMatrix();
-	
+
 	this.materialDefault.apply();
 
 
