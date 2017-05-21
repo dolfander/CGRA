@@ -94,10 +94,10 @@ MyInterface.prototype.processKeyboard = function(event) {
 		this.scene.submarine.pushBackward(0.03);
 	}
 	else if(x== 81 || x== 113 ){
-		this.scene.submarine.pushUp(0.001);
+		this.scene.submarine.pushUp(0.02);
 	}
 	else if(x==69 || x == 101 ){
-		this.scene.submarine.pushDown(0.001);
+		this.scene.submarine.pushDown(0.02);
 	}
 	else if(x==80 || x == 112 ){
 		this.scene.submarine.periscopeUp();

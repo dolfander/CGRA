@@ -82,10 +82,10 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.top.v_rotation_ang -= .5;
 
 if(this.a<0)
-	this.a+= 0.3;
+	this.a+= 0.4;
 
 if(this.a>0)
-	this.a-= 0.3;
+	this.a-= 0.4;
 
 
     this.time = currTime;

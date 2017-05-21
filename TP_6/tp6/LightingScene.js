@@ -326,15 +326,13 @@ LightingScene.prototype.update = function(currTime){
 
 };
 
-<<<<<<< HEAD
+
 LightingScene.prototype.getUpdatePeriod = function() {
     return this.updatePeriod;
 }
 
-LightingScene.prototype.doSomething = function(){
-=======
 
 LightingScene.prototype.Controls = function(){
->>>>>>> ab864b46edffc09b8d8b0d7f651a8566e6bb1c35
+
 
 };
