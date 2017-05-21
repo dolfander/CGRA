@@ -26,6 +26,8 @@ serialInclude([
 	'MyTargetStructure.js',
 	'MyExplosion.js',
 	'MyMovingTorpedo.js',
+	'MyInvertedSemiSphere.js',
+
 
 
 	main=function() {

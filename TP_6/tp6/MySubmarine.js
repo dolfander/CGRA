@@ -24,7 +24,7 @@
 	this.time = 0;
 	this.max_h_speed = .5;
 	this.max_v_speed = 0.1;
-	this.max_h_angspeed = 0.1;
+	this.max_h_angspeed = 0.07;
 	this.max_v_angspeed = 1;
 
  };
@@ -64,10 +64,10 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.leftHelix.update(0,this.h_speed);
 
 	if(this.structure.h_rotation_ang >0)
-	this.structure.h_rotation_ang -= .5;
+	this.structure.h_rotation_ang -= 1.5;
 
 	if(this.structure.h_rotation_ang <0)
-	this.structure.h_rotation_ang += .5;
+	this.structure.h_rotation_ang += 1.5;
 
   if(this.structure.v_rotation_ang <0)
 	this.structure.v_rotation_ang += .5;
@@ -82,10 +82,10 @@ MySubmarine.prototype.update = function(currTime) {
 	this.structure.top.v_rotation_ang -= .5;
 
 if(this.a<0)
-	this.a+= 0.2;
+	this.a+= 0.3;
 
 if(this.a>0)
-	this.a-= 0.2;
+	this.a-= 0.3;
 
 
     this.time = currTime;
@@ -117,8 +117,7 @@ MySubmarine.prototype.pushLeft = function(amount) {
 		this.h_angspeed = this.max_h_angspeed;
 	else this.h_angspeed = -this.max_h_angspeed;
 
-	if(this.structure.h_rotation_ang > -45)
-	this.structure.h_rotation_ang -= 5;
+
 
 
 }
@@ -131,8 +130,7 @@ MySubmarine.prototype.pushRight = function(amount) {
 
 
 
-if(this.structure.h_rotation_ang < 45)
-	this.structure.h_rotation_ang += 5;
+
 
 }
 
@@ -141,19 +139,21 @@ MySubmarine.prototype.pushBackward = function(amount) {
 }
 
 
-MySubmarine.prototype.rotateLeft = function(amount) {
-
-	this.b += amount;
-}
 
 MySubmarine.prototype.rotateRight = function(amount) {
 
   this.b -= amount;
+  
+  if(this.structure.h_rotation_ang < 45 && amount >0.01)
+	this.structure.h_rotation_ang += 5;
+
+if(this.structure.h_rotation_ang > -45 && amount <-0.01)
+	this.structure.h_rotation_ang -= 5;
 }
 
 MySubmarine.prototype.rotateUp = function(amount) {
 
-//if(this.a > -10  &&this.a< 10)
+
   this.a -= amount;
 }
 

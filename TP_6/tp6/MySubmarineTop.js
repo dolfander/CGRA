@@ -38,6 +38,7 @@ MySubmarineTop.prototype.display = function() {
 
 	this.scene.pushMatrix();
 	   this.scene.translate(0,0,1);
+	   this.scene.scale(1,1.2,1);
 	   this.surface.display();
 	this.scene.popMatrix();
 

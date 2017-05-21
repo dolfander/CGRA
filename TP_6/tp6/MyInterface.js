@@ -30,7 +30,7 @@ MyInterface.prototype.init = function(application) {
 	// the identifier 'doSomething' must be a function declared as part of that object (i.e. a member of the scene class)
 	// e.g. LightingScene.prototype.doSomething = function () { console.log("Doing something..."); };
 
-	this.gui.add(this.scene, 'doSomething');
+	this.gui.add(this.scene, 'Controls');
 
 	// add a group of controls (and open/expand by defult)
 
@@ -40,8 +40,8 @@ MyInterface.prototype.init = function(application) {
 	// add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
 	// e.g. this.option1=true; this.option2=false;
 
-
-
+	
+	
 	group.add(this.scene, 'Light1');
 	group.add(this.scene, 'Light2');
 	group.add(this.scene, 'Light3');
@@ -81,11 +81,11 @@ MyInterface.prototype.processKeyboard = function(event) {
 
 
 	if (x == 65 || x == 97){
-		this.scene.submarine.pushLeft(-.02);
-
+		this.scene.submarine.pushLeft(-.005);
+	
 	}
 	else if (x == 68 ||x == 100)	{
-		this.scene.submarine.pushRight(-.02)
+		this.scene.submarine.pushRight(-.005)
 	}
 	else if (x == 87 || x == 119){
 		this.scene.submarine.pushForward(0.03);
@@ -94,10 +94,10 @@ MyInterface.prototype.processKeyboard = function(event) {
 		this.scene.submarine.pushBackward(0.03);
 	}
 	else if(x== 81 || x== 113 ){
-		this.scene.submarine.pushUp(0.01);
+		this.scene.submarine.pushUp(0.001);
 	}
 	else if(x==69 || x == 101 ){
-		this.scene.submarine.pushDown(0.01);
+		this.scene.submarine.pushDown(0.001);
 	}
 	else if(x==80 || x == 112 ){
 		this.scene.submarine.periscopeUp();
@@ -108,7 +108,6 @@ MyInterface.prototype.processKeyboard = function(event) {
 	else if(x==70 || x == 102 ){
 		this.scene.deployTorpedo();
 	}
-
 
 
 };
