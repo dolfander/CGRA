@@ -12,4 +12,4 @@ Code developed during classes
 
 **TP5** - Animations
 
-Final project - TP6
+Final project - **TP6**
